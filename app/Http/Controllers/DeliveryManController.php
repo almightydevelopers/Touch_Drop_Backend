@@ -16,7 +16,6 @@ use Illuminate\Validation\Rules\Password;
 
 class DeliveryManController extends Controller
 {
-
     public function create()
     {
         $status = BusinessSetting::where('key', 'toggle_dm_registration')->first();
@@ -29,7 +28,6 @@ class DeliveryManController extends Controller
         $custome_recaptcha = new CaptchaBuilder;
         $custome_recaptcha->build();
         Session::put('six_captcha', $custome_recaptcha->getPhrase());
-
         return view('dm-registration', compact('custome_recaptcha'));
     }
 
