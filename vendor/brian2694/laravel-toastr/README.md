@@ -6,6 +6,7 @@ I cloned the repository brian2694/laravel-toastr to update to Laravel 5.5
 
 | Laravel Version     | Is Working? |
 | ---      | ---       |
+| 10.x | Yes         |
 | 9.x | Yes         |
 | 8.x | Yes         |
 | 7.x | Yes        |
@@ -107,4 +108,8 @@ You should add `{!! Toastr::message() !!}` to your html.
 
 
 
-### MIT
+## Contributors
+
+We'd like to thank the following individuals for their contributions to this project:
+
+- [Antonio Bruno](https://github.com/antonio8101) - Set DOC on the Facade class.

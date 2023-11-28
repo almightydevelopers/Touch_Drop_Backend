@@ -9,8 +9,8 @@ use RuntimeException;
 
 abstract class Renderer
 {
-    use Truncation;
     use Colors;
+    use Truncation;
 
     /**
      * The output to be rendered.
@@ -59,6 +59,36 @@ abstract class Renderer
     protected function error(string $message): self
     {
         return $this->line($this->red("  ⚠ {$message}"));
+    }
+
+    /**
+     * Render an hint message.
+     */
+    protected function hint(string $message): self
+    {
+        if ($message === '') {
+            return $this;
+        }
+
+        $message = $this->truncate($message, $this->prompt->terminal()->cols() - 6);
+
+        return $this->line($this->gray("  {$message}"));
+    }
+
+    /**
+     * Apply the callback if the given "value" is truthy.
+     *
+     * @return $this
+     */
+    protected function when(mixed $value, callable $callback, callable $default = null): self
+    {
+        if ($value) {
+            $callback($this);
+        } elseif ($default) {
+            $default($this);
+        }
+
+        return $this;
     }
 
     /**

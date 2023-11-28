@@ -8,8 +8,8 @@ use Illuminate\Support\Str;
 use InvalidArgumentException;
 use OpenSpout\Common\Entity\Row;
 use OpenSpout\Common\Entity\Style\Style;
+use OpenSpout\Writer\Common\AbstractOptions;
 use OpenSpout\Writer\Common\Creator\WriterEntityFactory;
-use OpenSpout\Writer\XLSX\Writer;
 
 /**
  * Trait Exportable.
@@ -27,11 +27,11 @@ trait Exportable
     private $rows_style;
 
     /**
-     * @param \OpenSpout\Reader\ReaderInterface|\OpenSpout\Writer\WriterInterface $reader_or_writer
+     * @param AbstractOptions $options
      *
      * @return mixed
      */
-    abstract protected function setOptions(&$reader_or_writer);
+    abstract protected function setOptions(&$options);
 
     /**
      * @param string        $path
@@ -52,7 +52,7 @@ trait Exportable
     }
 
     /**
-     * @param $path
+     * @param               $path
      * @param callable|null $callback
      *
      * @throws \OpenSpout\Common\Exception\InvalidArgumentException
@@ -75,7 +75,7 @@ trait Exportable
     }
 
     /**
-     * @param $path
+     * @param               $path
      * @param string        $function
      * @param callable|null $callback
      *

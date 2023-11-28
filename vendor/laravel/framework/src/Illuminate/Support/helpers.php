@@ -91,7 +91,7 @@ if (! function_exists('class_uses_recursive')) {
 
         $results = [];
 
-        foreach (array_reverse(class_parents($class)) + [$class => $class] as $class) {
+        foreach (array_reverse(class_parents($class) ?: []) + [$class => $class] as $class) {
             $results += trait_uses_recursive($class);
         }
 
@@ -317,7 +317,7 @@ if (! function_exists('throw_if')) {
      * @template TException of \Throwable
      *
      * @param  mixed  $condition
-     * @param  TException|class-string<TException>  $exception
+     * @param  TException|class-string<TException>|string  $exception
      * @param  mixed  ...$parameters
      * @return mixed
      *
@@ -344,7 +344,7 @@ if (! function_exists('throw_unless')) {
      * @template TException of \Throwable
      *
      * @param  mixed  $condition
-     * @param  TException|class-string<TException>  $exception
+     * @param  TException|class-string<TException>|string  $exception
      * @param  mixed  ...$parameters
      * @return mixed
      *

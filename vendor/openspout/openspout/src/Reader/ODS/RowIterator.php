@@ -30,13 +30,13 @@ final class RowIterator implements RowIteratorInterface
     public const XML_ATTRIBUTE_NUM_ROWS_REPEATED = 'table:number-rows-repeated';
     public const XML_ATTRIBUTE_NUM_COLUMNS_REPEATED = 'table:number-columns-repeated';
 
-    private Options $options;
+    private readonly Options $options;
 
     /** @var XMLProcessor Helper Object to process XML nodes */
-    private XMLProcessor $xmlProcessor;
+    private readonly XMLProcessor $xmlProcessor;
 
     /** @var Helper\CellValueFormatter Helper to format cell values */
-    private Helper\CellValueFormatter $cellValueFormatter;
+    private readonly Helper\CellValueFormatter $cellValueFormatter;
 
     /** @var bool Whether the iterator has already been rewound once */
     private bool $hasAlreadyBeenRewound = false;
@@ -45,7 +45,7 @@ final class RowIterator implements RowIteratorInterface
     private Row $currentlyProcessedRow;
 
     /** @var null|Row Buffer used to store the current row, while checking if there are more rows to read */
-    private ?Row $rowBuffer;
+    private ?Row $rowBuffer = null;
 
     /** @var bool Indicates whether all rows have been read */
     private bool $hasReachedEndOfFile = false;
@@ -57,7 +57,7 @@ final class RowIterator implements RowIteratorInterface
     private int $nextRowIndexToBeProcessed = 1;
 
     /** @var null|Cell Last processed cell (because when reading cell at column N+1, cell N is processed) */
-    private ?Cell $lastProcessedCell;
+    private ?Cell $lastProcessedCell = null;
 
     /** @var int Number of times the last processed row should be repeated */
     private int $numRowsRepeated = 1;
