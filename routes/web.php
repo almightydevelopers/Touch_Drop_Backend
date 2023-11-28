@@ -27,7 +27,7 @@ use App\Http\Controllers\PaystackController;
 |
 */
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/abc', 'HomeController@index')->name('home');
 Route::get('lang/{locale}', 'HomeController@lang')->name('lang');
 Route::get('terms-and-conditions', 'HomeController@terms_and_conditions')->name('terms-and-conditions');
 Route::get('about-us', 'HomeController@about_us')->name('about-us');
